@@ -5,42 +5,28 @@ const newProjectBtn = document.getElementById('new-project');
 const homeBtn = document.getElementById('home');
 const projects = [];
 
-/*
-newProjectBtn.addEventListener('click', function() {
-    const newProjectInput = document.createElement('div');
+const defaultProject = new Project('Project One');
+const defaultTask = new Task('Clean dishes', 'Head to the kitchen and wash dishes before dinner', 'Tonight', 'High');
 
-    const newProjectName = document.createElement('input');
-    newProjectName.setAttribute('type', 'text');
-    newProjectName.setAttribute('id', 'newProjectName');
-    newProjectName.setAttribute('placeholder', 'Name...');
+defaultProject.addTask(defaultTask);
 
-    const saveNewProject = document.createElement('button');
-    saveNewProject.textContent = 'Save';
+let activeProject = defaultProject;
 
-})
+function renderTasks() {
+    const taskContainer = document.getElementById('task-container');
+    const projectNameDisplay = document.getElementById('current-project-name');
 
-function initialize() {
-    const defaultProject = new Project('Project Alpha');
-    projects.push(defaultProject);
+    taskContainer.innerHTML = '';
 
-    const projectContainer = document.createElement('div');
-    const projectHeader = document.createElement('h1');
-    const projectRemoveBtn = document.createElement('btn');
+    projectNameDisplay.textContent = activeProject.name;
 
-    projectHeader.textContent = defaultProject.name;
-    projectRemoveBtn.textContent = 'Remove';
-
-    projectRemoveBtn.addEventListener('click', function() {
-        
-    })
-}
-*/
-
-function createNewProject(name) {
-    const newProject = new Project(name);
-    projects.push(newProject);
+    activeProject.getTasks().forEach(task => {
+        const taskElement = document.createElement('div');
+        taskElement.classList.add('task-card');
+        taskElement.textContent = `${task.title} - ${task.dueDate}`;
+        taskElement.dataset.id = task.id;
+        taskContainer.appendChild(taskElement);
+    });
 }
 
-function deleteProject(projectId) {
-    
-}
+renderTasks();

@@ -3,16 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App</title>
+    <title>JS Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="controller.js" type="module" defer></script>
 </head>
 <body>
+
     <header>
-        <h1>To-Do App</h1>
+        <h1>My Tasks</h1>
     </header>
-    <div id="app">
-        <button id="home">Home</button>
-        <button id="new-project">New Project</button>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <ul id="project-list">
+                <li id="home">Home</li>
+            </ul>
+            <button id="new-project">Add Project</button>
+        </aside>
+
+        <main class="content">
+            <h2 id="current-project-name">Project One</h2>
+            
+            <div id="task-container">
+                </div>
+
+            <button id="add-task-btn">+ Add Task</button>
+        </main>
     </div>
+
+    <dialog id="task-modal">
+        <form id="task-form" method="dialog">
+            <input type="text" id="task-title" placeholder="Task Name" required>
+            <textarea id="task-desc" placeholder="Description"></textarea>
+            <input type="date" id="task-date">
+            <select id="task-priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button type="submit" id="submit-task">Add Task</button>
+            <button type="button" id="close-modal">Cancel</button>
+        </form>
+    </dialog>
+
     <script src="index.js" type="module"></script>
 </body>
 </html>

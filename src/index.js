@@ -5,4 +5,3 @@ const newProject = new Project('Test Project');
 
 newProject.addTask('test title', 'test desc', 'test due date', 'test priority');
 
-newProject.displayTasks();
