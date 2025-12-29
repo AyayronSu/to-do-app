@@ -6,15 +6,19 @@ export class Project {
         this.tasks = tasks;
     }
 
-    addTask(title, description, dueDate, priority) {
-        this.tasks.push(new Task(title, description, dueDate, priority));
+    addTask(task) {
+        this.tasks.push(task);
     }
 
     getTasks() {
         return [...this.tasks];
     }
 
-    removeTask(index) {
-        this.tasks.splice(index, 1);
+    getTaskById(id) {
+        return this.tasks.find(task => task.id === id);
+    }
+
+    removeTaskById(id) {
+        this.tasks = this.tasks.filter(task => task.id !== id);
     }
 }
